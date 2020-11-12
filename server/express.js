@@ -6,6 +6,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import Template from './../template'
+ import userRouters from './routers/user.routers'
 
 
 
@@ -26,6 +27,7 @@ app.use(cors())
 app.get('/', (req, res) =>{
   res.status(200).send(Template())
 })
+app.use('/',userRouters)
 
 
 
