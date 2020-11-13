@@ -29,7 +29,7 @@ UserSchema
     .set(function (password){
         this._password = password
         this.salt = this.makeSalt()
-        this.hashed_password = this.encodePassword(password)
+        this.hashed_password = this.encryptedPassword(password)
     })
     .get(function (){
         return this._password
@@ -37,7 +37,7 @@ UserSchema
 
 UserSchema.methods = {
     authenticate: function (plainText){
-        return this.encryptPassword(plainText) === this.hashed_password
+        return this.encryptedPassword(plainText) === this.hashed_password
     },
     encryptedPassword: function (password){
         if (!password){
