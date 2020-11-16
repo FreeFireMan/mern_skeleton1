@@ -5,6 +5,11 @@ import compress from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
 
+import path from 'path';
+const CURRENT_WORKING_DIR = process.cwd()
+
+import devBundle from "./devBundle";
+
 import Template from './../template'
  import userRouters from './routers/user.routers'
  import authRoutes from './routers/auth.routes'
@@ -12,6 +17,10 @@ import Template from './../template'
 
 
 const app = express();
+
+devBundle.compile(app)
+
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')));
 
 app.use(bodyParser.json())
 
