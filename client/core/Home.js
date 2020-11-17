@@ -23,10 +23,21 @@ const useStyles = makeStyles(theme =>({
 
 
 const Home = () =>{
+  const classes = useStyles()
   return(
-      <div>
-
-      </div>
+      <Card className={classes.card}>
+        <Typography variant='h6' className={classes.title}>
+          Home page
+        </Typography>
+        <CardMedia className={classes.media}
+        image={unicornbikeImg}
+        title="Unicorn Bicycle"/>
+        <CardContent>
+          <Typography variant='body2' component='p'>
+            Welcome  to the Homepage
+          </Typography>
+        </CardContent>
+      </Card>
   )
 }
 
