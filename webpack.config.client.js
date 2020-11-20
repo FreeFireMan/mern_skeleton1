@@ -51,11 +51,13 @@ const CURRENT_WORKING_DIR = process.cwd();
 const config = {
     name: "browser",
     mode: "development",
-     // devtool: 'eval-source-map',
-      devtool: 'eval-source-map',
+     // devtool: 'eval',
+      devtool: 'source-map',
     entry: [
+
         'webpack-hot-middleware/client',
-        path.join(CURRENT_WORKING_DIR, 'client/main.js')
+        // 'webpack-hot-middleware/client?reload=true',
+        path.join(CURRENT_WORKING_DIR, '/client/main.js')
     ],
     output: {
         path: path.join(CURRENT_WORKING_DIR , '/dist'),
@@ -72,12 +74,18 @@ const config = {
             {
                 test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
                 use: 'file-loader'
-            }
+            },
+            {
+                test: /\.jsx?$/,
+                include: /node_modules/,
+                use: ['react-hot-loader/webpack']
+            },
         ]
     },
     plugins: [
+
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
     ],
     resolve: {
         alias: {
