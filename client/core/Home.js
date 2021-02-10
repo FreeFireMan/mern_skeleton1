@@ -23,8 +23,10 @@ const useStyles = makeStyles(theme =>({
 
 
 const Home = () =>{
-  const classes = useStyles()
-  return(
+
+  const classes = useStyles();
+
+    return(
       <Card className={classes.card}>
         <Typography variant='h6' className={classes.title}>
           Home page

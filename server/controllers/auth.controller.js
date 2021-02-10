@@ -35,11 +35,13 @@ const signOut = (req, res) => {
         messages: 'signed out'
     })
 }
+
 const requireSignIn = expressJwt({
     secret: config.jwtSecret,
     userProperty: 'auth',
     alg: "sha1"
 })
+
 const hasAuthorization = (req, res, next) => {
     const authorized = req.profile && req.auth
         && req.profile._id === req.auth._id

@@ -1,17 +1,16 @@
 import React from 'react';
-import {Router, Switch} from 'react-router';
+import {Route, Switch} from 'react-router-dom';
 import Home from './core/Home'
-import { createBrowserHistory } from "history";
+import {createBrowserHistory} from "history";
 
 const customHistory = createBrowserHistory();
-const MainRouter =()=>{
-  return(
-      <div>
+const MainRouter = () => {
+
+    return (
         <Switch>
-          <Router exact path="/" component={Home} history={customHistory}/>
+            <Route  path="/" component={Home} history={customHistory} exact/>
         </Switch>
-      </div>
-  )
+    )
 }
 
 export default MainRouter
